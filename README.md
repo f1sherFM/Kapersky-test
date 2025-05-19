@@ -13,4 +13,9 @@ Run the main.py (main project run file)
 
 Then run the visualization.py (charts and graphs)
 
+You have to get this:
+
+
+![image](https://github.com/user-attachments/assets/b23ae4b7-fd30-4cfe-87c8-3db47ad723bd)
+
 
