@@ -11,7 +11,6 @@ install the requirements
 
 Run the main.py (main project run file)
 
-Then run the visualization.py (charts and graphs)
 
 You have to get this:
 
