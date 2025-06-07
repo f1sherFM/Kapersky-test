@@ -491,46 +491,5 @@ def main():
         print(f"❌ Не удалось обработать файл: {e}")
         return
 
-    print(f"\n✅ Найдено {len(df_input)} записей. Начинаем обработку...\n")
-
-    for idx, row in df_input.iterrows():
-        url = str(row['URL']).strip()      # Обязательно с большой буквы!
-        lib_text = str(row['lib_text']).strip()
-
-        print(f"[{idx+1}/{len(df_input)}] Обработка: {url}")
-
-        if not lib_text:
-            print("⚠️ lib_text пустой. Пропускаем...\n")
-            continue
-
-        original_text = extract_text_from_url(url)
-
-        if original_text.startswith("Ошибка"):
-            print(f"❌ Ошибка парсинга: {original_text}\n")
-            results.append({
-                'url': url,
-                'status': 'error',
-                'error': original_text
-            })
-            continue
-
-        comparison = compare_texts(original_text, lib_text)
-
-        result = {
-            'url': url,
-            'similarity': comparison['similarity'],
-            'original_length': comparison['original_length'],
-            'lib_length': comparison['lib_length'],
-            'missing_lines_count': comparison['missing_lines_count'],
-            'extra_lines_count': comparison['extra_lines_count'],
-            'example_missing': " | ".join(comparison['example_missing']),
-            'example_extra': " | ".join(comparison['example_extra']),
-            'status': 'success'
-        }
-
-        results.append(result)
-        print(f"✅ Сходство: {comparison['similarity']}%\n")
-
-
 if __name__ == "__main__":
     main()
